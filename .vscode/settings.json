@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        "emotrack/src"
+    ],
+    "java.project.referencedLibraries": [
+        "emotrack/lib/ojdbc11.jar"
+    ]
+}
