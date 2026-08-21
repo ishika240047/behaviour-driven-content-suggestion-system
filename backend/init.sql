@@ -1,0 +1,48 @@
+CREATE SEQUENCE USER_SEQ START WITH 1;
+CREATE SEQUENCE HISTORY_SEQ START WITH 1;
+
+CREATE TABLE USERS (
+    USER_ID INT PRIMARY KEY,
+    NAME VARCHAR(100),
+    EMAIL VARCHAR(100) UNIQUE,
+    PASSWORD VARCHAR(100)
+);
+
+CREATE TABLE EMOTIONS (
+    EMOTION_ID VARCHAR(50) PRIMARY KEY,
+    EMOTION_NAME VARCHAR(50)
+);
+
+CREATE TABLE CONTENT_TYPES (
+    CONTENT_ID VARCHAR(50) PRIMARY KEY,
+    CONTENT_NAME VARCHAR(50)
+);
+
+CREATE TABLE SUGGESTIONS (
+    SUGGESTION_ID INT PRIMARY KEY,
+    TITLE VARCHAR(255),
+    LINK VARCHAR(255),
+    EMOTION_ID VARCHAR(50) REFERENCES EMOTIONS(EMOTION_ID),
+    CONTENT_ID VARCHAR(50) REFERENCES CONTENT_TYPES(CONTENT_ID)
+);
+
+CREATE TABLE USER_HISTORY (
+    HISTORY_ID INT PRIMARY KEY,
+    USER_ID INT REFERENCES USERS(USER_ID),
+    EMOTION_ID VARCHAR(50) REFERENCES EMOTIONS(EMOTION_ID),
+    CONTENT_ID VARCHAR(50) REFERENCES CONTENT_TYPES(CONTENT_ID),
+    START_TIME TIMESTAMP,
+    END_TIME TIMESTAMP,
+    TIME_SPENT_MIN INT
+);
+
+-- Seed basic data
+INSERT INTO EMOTIONS VALUES ('E1', 'happy'), ('E2', 'sad'), ('E3', 'angry'), ('E4', 'anxious');
+INSERT INTO CONTENT_TYPES VALUES ('C1', 'video'), ('C2', 'music'), ('C3', 'article');
+
+-- Seed suggestions data for demo
+INSERT INTO SUGGESTIONS VALUES 
+(1, 'Happy Video 1 (Funny cats)', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'E1', 'C1'),
+(2, 'Sad Music 1 (Soft piano)', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'E2', 'C2'),
+(3, 'Angry Article 1 (Dealing with anger)', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'E3', 'C3'),
+(4, 'Anxious Music 1 (Calming ambient)', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'E4', 'C2');

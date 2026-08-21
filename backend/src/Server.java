@@ -120,7 +120,7 @@ public class Server {
 
             }else{
 
-                String insertSql = "INSERT INTO USERS VALUES (USER_SEQ.NEXTVAL, ?, ?, ?)";
+                String insertSql = "INSERT INTO USERS VALUES (nextval('USER_SEQ'), ?, ?, ?)";
 
                 PreparedStatement psInsert = con.prepareStatement(insertSql);
 

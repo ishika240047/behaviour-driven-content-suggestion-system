@@ -63,7 +63,7 @@ public class RegisterFrame extends JFrame {
                 }
 
                 // insert new user
-                String insertSql = "INSERT INTO USERS (USER_ID,NAME,EMAIL,PASSWORD) VALUES (USER_SEQ.NEXTVAL,?,?,?)";
+                String insertSql = "INSERT INTO USERS (USER_ID,NAME,EMAIL,PASSWORD) VALUES (nextval('USER_SEQ'),?,?,?)";
 
                 PreparedStatement psInsert = con.prepareStatement(insertSql);
 

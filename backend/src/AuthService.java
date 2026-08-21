@@ -31,7 +31,7 @@ public class AuthService {
         return;
     }
 
-    String sql = "INSERT INTO USERS VALUES (USER_SEQ.NEXTVAL, ?, ?, ?)";
+    String sql = "INSERT INTO USERS VALUES (nextval('USER_SEQ'), ?, ?, ?)";
 
     PreparedStatement ps = con.prepareStatement(sql);
     ps.setString(1, name);

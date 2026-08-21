@@ -5,7 +5,7 @@ public class HistoryService {
     
     public static int startSession(Connection con, int userId, String emotionId, String contentId) throws Exception {
 
-        String seqQuery = "SELECT HISTORY_SEQ.NEXTVAL FROM dual";
+        String seqQuery = "SELECT nextval('HISTORY_SEQ')";
         PreparedStatement psSeq = con.prepareStatement(seqQuery);
         ResultSet rsSeq = psSeq.executeQuery();
 
@@ -18,7 +18,7 @@ public class HistoryService {
         String insertSql =
                 "INSERT INTO USER_HISTORY " +
                 "(HISTORY_ID, USER_ID, EMOTION_ID, CONTENT_ID, START_TIME) " +
-                "VALUES (?, ?, ?, ?, SYSTIMESTAMP)";
+                "VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)";
 
         PreparedStatement psInsert = con.prepareStatement(insertSql);
 
@@ -37,11 +37,8 @@ public class HistoryService {
     public static void endSession(Connection con, int historyId) throws Exception {
 
         String updateSql =
-                "UPDATE USER_HISTORY SET END_TIME = SYSTIMESTAMP, " +
-                "TIME_SPENT_MIN = " +
-                "EXTRACT(DAY FROM (SYSTIMESTAMP - START_TIME))*24*60 + " +
-                "EXTRACT(HOUR FROM (SYSTIMESTAMP - START_TIME))*60 + " +
-                "EXTRACT(MINUTE FROM (SYSTIMESTAMP - START_TIME)) " +
+                "UPDATE USER_HISTORY SET END_TIME = CURRENT_TIMESTAMP, " +
+                "TIME_SPENT_MIN = EXTRACT(EPOCH FROM (CURRENT_TIMESTAMP - START_TIME)) / 60 " +
                 "WHERE HISTORY_ID = ?";
 
         PreparedStatement psUpdate = con.prepareStatement(updateSql);
