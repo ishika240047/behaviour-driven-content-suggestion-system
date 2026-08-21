@@ -5,6 +5,8 @@ services:
     build: ./backend
     ports:
       - "7070:7070"
+    extra_hosts:
+      - "gogo:host.docker.internal"
 
   frontend:
     build: ./frontend
