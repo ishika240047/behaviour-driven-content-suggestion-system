@@ -1,129 +1,128 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<title>History - Emotrack</title>
+  <title>History - Emotrack</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    body {
+      background: #0a0a0f;
+      font-family: Poppins;
+      color: white;
+      margin: 0;
+    }
 
-body{
-background:#0a0a0f;
-font-family:Poppins;
-color:white;
-margin:0;
-}
+    /* NAVBAR */
 
-/* NAVBAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: #111;
+    }
 
-nav{
-display:flex;
-justify-content:space-between;
-padding:20px 60px;
-background:#111;
-}
+    .logo {
+      font-weight: 700;
+      color: #7c6cff;
+    }
 
-.logo{
-font-weight:700;
-color:#7c6cff;
-}
+    /* MAIN */
 
-/* MAIN */
+    .container {
+      padding: 60px;
+    }
 
-.container{
-padding:60px;
-}
+    h2 {
+      margin-bottom: 30px;
+    }
 
-h2{
-margin-bottom:30px;
-}
+    /* TABLE */
 
-/* TABLE */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #151520;
+      border-radius: 10px;
+      overflow: hidden;
+    }
 
-table{
-width:100%;
-border-collapse:collapse;
-background:#151520;
-border-radius:10px;
-overflow:hidden;
-}
+    th {
+      background: #7c6cff;
+      padding: 15px;
+    }
 
-th{
-background:#7c6cff;
-padding:15px;
-}
+    td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #222;
+    }
 
-td{
-padding:15px;
-text-align:center;
-border-bottom:1px solid #222;
-}
+    tr:hover {
+      background: #1c1c2a;
+    }
 
-tr:hover{
-background:#1c1c2a;
-}
-
-button{
-padding:10px 20px;
-border:none;
-border-radius:8px;
-background:linear-gradient(45deg,#7c6cff,#5de0ff);
-cursor:pointer;
-}
-
-</style>
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #7c6cff, #5de0ff);
+      cursor: pointer;
+    }
+  </style>
 
 </head>
 
 <body>
 
-<nav>
+  <nav>
 
-<div class="logo">EMOTRACK</div>
+    <div class="logo">EMOTRACK</div>
 
-<div>
-<button onclick="location.href='dashboard.html'">Dashboard</button>
-<button onclick="location.href='index.html'">Logout</button>
-</div>
+    <div>
+      <button onclick="location.href='dashboard.html'">Dashboard</button>
+      <button onclick="location.href='index.html'">Logout</button>
+    </div>
 
-</nav>
+  </nav>
 
-<div class="container">
+  <div class="container">
 
-<h2>Your Activity History</h2>
+    <h2>Your Activity History</h2>
 
-<table>
-<tbody id="historyBody">
-<tr>
-<td colspan="5">Loading history...</td>
-</tr>
-</tbody>
+    <table>
+      <tbody id="historyBody">
+        <tr>
+          <td colspan="5">Loading history...</td>
+        </tr>
+      </tbody>
 
-</table>
+    </table>
 
-</div>
-<script>
+  </div>
+  <script>
 
-async function loadHistory(){
+    async function loadHistory() {
 
-let response = await fetch("http://localhost:7070/history");
+      let response = await fetch("http://localhost:7070/history");
 
-let data = await response.text();
+      let data = await response.text();
 
-let rows = data.split("\n");
+      let rows = data.split("\n");
 
-let tableBody = document.getElementById("historyBody");
+      let tableBody = document.getElementById("historyBody");
 
-let html = "";
+      let html = "";
 
-rows.forEach(row => {
+      rows.forEach(row => {
 
-if(row.trim()==="") return;
+        if (row.trim() === "") return;
 
-let parts = row.split("|");
+        let parts = row.split("|");
 
-html += `
+        html += `
 <tr>
 <td>${parts[0]}</td>
 <td>${parts[1]}</td>
@@ -133,14 +132,15 @@ html += `
 </tr>
 `;
 
-});
+      });
 
-tableBody.innerHTML = html;
+      tableBody.innerHTML = html;
 
-}
+    }
 
-window.onload = loadHistory;
+    window.onload = loadHistory;
 
-</script>
+  </script>
 </body>
+
 </html>

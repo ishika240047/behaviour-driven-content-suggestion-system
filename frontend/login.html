@@ -1,104 +1,104 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Login - Emotrack</title>
+  <title>Login - Emotrack</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    body {
+      background: #0a0a0f;
+      font-family: Poppins;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
-body{
-background:#0a0a0f;
-font-family:Poppins;
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-height:100vh;
-}
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 12px;
+      width: 320px;
+      text-align: center;
+    }
 
-.card{
-background:rgba(255,255,255,0.05);
-padding:40px;
-border-radius:12px;
-width:320px;
-text-align:center;
-}
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+    }
 
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:none;
-border-radius:8px;
-}
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(45deg, #7c6cff, #5de0ff);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
-button{
-width:100%;
-padding:12px;
-background:linear-gradient(45deg,#7c6cff,#5de0ff);
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-a{
-color:#7c6cff;
-text-decoration:none;
-}
-
-</style>
+    a {
+      color: #7c6cff;
+      text-decoration: none;
+    }
+  </style>
 
 </head>
 
 <body>
 
-<div class="card">
+  <div class="card">
 
-<h2><button onclick="login()">Login</button></h2>
+    <h2><button onclick="login()">Login</button></h2>
 
-<input type="email" placeholder="Email">
+    <input type="email" placeholder="Email">
 
-<input type="password" placeholder="Password">
+    <input type="password" placeholder="Password">
 
-<button onclick="location.href='dashboard.html'">Login</button>
+    <button onclick="location.href='dashboard.html'">Login</button>
 
-<p>Don't have account? <a href="register.html">Register</a></p>
+    <p>Don't have account? <a href="register.html">Register</a></p>
 
-</div>
-<script>
+  </div>
+  <script>
 
-async function login(){
+    async function login() {
 
-let email = document.querySelector("input[type=email]").value;
-let password = document.querySelector("input[type=password]").value;
+      let email = document.querySelector("input[type=email]").value;
+      let password = document.querySelector("input[type=password]").value;
 
-let response = await fetch("http://localhost:7070/login",{
+      let response = await fetch("http://localhost:7070/login", {
 
-method:"POST",
+        method: "POST",
 
-headers:{
-"Content-Type":"application/json"
-},
+        headers: {
+          "Content-Type": "application/json"
+        },
 
-body: JSON.stringify({
-email:email,
-password:password
-})
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
 
-});
+      });
 
-let result = await response.text();
+      let result = await response.text();
 
-if(result === "LOGIN_SUCCESS"){
-    alert("Login successful");
-    window.location.href = "dashboard.html";
-}else{
-    alert("Invalid email or password");
-}
+      if (result === "LOGIN_SUCCESS") {
+        alert("Login successful");
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Invalid email or password");
+      }
 
-}
+    }
 
-</script>
+  </script>
 </body>
+
 </html>

@@ -1,192 +1,191 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
 
-<title>Emotrack Dashboard</title>
+  <title>Emotrack Dashboard</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    .card {
+      background: #181822;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      transition: 0.3s;
+    }
 
-.card{
-background:#181822;
-padding:20px;
-border-radius:12px;
-box-shadow:0 10px 20px rgba(0,0,0,0.4);
-transition:0.3s;
-}
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    }
 
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 15px 25px rgba(0,0,0,0.6);
-}
+    body {
+      margin: 0;
+      font-family: Poppins;
+      background: #0f0f14;
+      color: white;
+    }
 
-body{
-margin:0;
-font-family:Poppins;
-background:#0f0f14;
-color:white;
-}
+    /* NAVBAR */
 
-/* NAVBAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: #111;
+      border-bottom: 1px solid #222;
+    }
 
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
-background:#111;
-border-bottom:1px solid #222;
-}
+    .logo {
+      font-size: 20px;
+      font-weight: 600;
+      color: #7c6cff;
+    }
 
-.logo{
-font-size:20px;
-font-weight:600;
-color:#7c6cff;
-}
+    nav button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #7c6cff;
+      color: white;
+      cursor: pointer;
+      margin-left: 10px;
+    }
 
-nav button{
-padding:10px 20px;
-border:none;
-border-radius:6px;
-background:#7c6cff;
-color:white;
-cursor:pointer;
-margin-left:10px;
-}
+    /* MAIN */
 
-/* MAIN */
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:60px 20px;
-text-align:center;
-}
+    h1 {
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
 
-h1{
-font-weight:600;
-margin-bottom:30px;
-}
+    /* SELECT BOX */
 
-/* SELECT BOX */
+    select {
+      padding: 12px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 200px;
+      font-size: 15px;
+    }
 
-select{
-padding:12px;
-margin:10px;
-border-radius:8px;
-border:none;
-width:200px;
-font-size:15px;
-}
+    /* BUTTON */
 
-/* BUTTON */
+    .action-btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #7c6cff, #5de0ff);
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
 
-.action-btn{
-padding:12px 30px;
-border:none;
-border-radius:8px;
-background:linear-gradient(45deg,#7c6cff,#5de0ff);
-font-size:16px;
-cursor:pointer;
-margin-top:20px;
-}
+    /* RESULT CARDS */
 
-/* RESULT CARDS */
+    .results {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
 
-.results{
-margin-top:40px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
+    .card {
+      background: #181822;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
 
-.card{
-background:#181822;
-padding:20px;
-border-radius:12px;
-box-shadow:0 10px 20px rgba(0,0,0,0.4);
-}
+    .card h3 {
+      margin: 0 0 10px 0;
+    }
 
-.card h3{
-margin:0 0 10px 0;
-}
-
-.card a{
-color:#5de0ff;
-text-decoration:none;
-font-weight:500;
-}
-
-</style>
+    .card a {
+      color: #5de0ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  </style>
 
 </head>
 
 <body>
 
-<nav>
+  <nav>
 
-<div class="logo">EMOTRACK</div>
+    <div class="logo">EMOTRACK</div>
 
-<div>
-<button onclick="location.href='history.html'">History</button>
-<button onclick="location.href='index.html'">Logout</button>
-</div>
+    <div>
+      <button onclick="location.href='history.html'">History</button>
+      <button onclick="location.href='index.html'">Logout</button>
+    </div>
 
-</nav>
+  </nav>
 
-<div class="container">
+  <div class="container">
 
-<h1>How are you feeling today?</h1>
+    <h1>How are you feeling today?</h1>
 
-<select id="emotion">
-<option value="happy">Happy</option>
-<option value="sad">Sad</option>
-<option value="confused">Confused</option>
-<option value="frustrated">Frustrated</option>
-<option value="angry">Angry</option>
-</select>
+    <select id="emotion">
+      <option value="happy">Happy</option>
+      <option value="sad">Sad</option>
+      <option value="confused">Confused</option>
+      <option value="frustrated">Frustrated</option>
+      <option value="angry">Angry</option>
+    </select>
 
-<select id="content">
-<option value="video">Video</option>
-<option value="article">Article</option>
-<option value="song">Song</option>
-<option value="quote">Quote</option>
-</select>
+    <select id="content">
+      <option value="video">Video</option>
+      <option value="article">Article</option>
+      <option value="song">Song</option>
+      <option value="quote">Quote</option>
+    </select>
 
-<br>
+    <br>
 
-<button class="action-btn" onclick="getSuggestion()">Get Suggestion</button>
+    <button class="action-btn" onclick="getSuggestion()">Get Suggestion</button>
 
-<div class="results" id="results">
+    <div class="results" id="results">
 
-</div>
+    </div>
 
-</div>
+  </div>
 
-<script>
+  <script>
 
-async function getSuggestion(){
+    async function getSuggestion() {
 
-let emotion=document.getElementById("emotion").value
-let content=document.getElementById("content").value
+      let emotion = document.getElementById("emotion").value
+      let content = document.getElementById("content").value
 
-let response=await fetch(`http://localhost:7070/suggest?emotion=${emotion}&content=${content}`)
+      let response = await fetch(`http://localhost:7070/suggest?emotion=${emotion}&content=${content}`)
 
-let data=await response.text()
+      let data = await response.text()
 
-let rows=data.split("\n")
+      let rows = data.split("\n")
 
-let html=""
+      let html = ""
 
-rows.forEach(row=>{
+      rows.forEach(row => {
 
-if(row.trim()==="") return
+        if (row.trim() === "") return
 
-let parts=row.split("|")
+        let parts = row.split("|")
 
-html+=`
+        html += `
 <div class="card">
 <h3>${parts[0]}</h3>
 <p>Recommended content for your mood.</p>
@@ -194,13 +193,14 @@ html+=`
 </div>
 `
 
-})
+      })
 
-document.getElementById("results").innerHTML=html
+      document.getElementById("results").innerHTML = html
 
-}
+    }
 
-</script>
+  </script>
 
 </body>
+
 </html>

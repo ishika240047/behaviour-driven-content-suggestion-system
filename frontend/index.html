@@ -1,268 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Emotrack - Mood Based Content Suggestions</title>
+  <meta charset="UTF-8">
+  <title>Emotrack - Mood Based Content Suggestions</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+    body {
+      background: #0a0a0f;
+      color: white;
+      overflow-x: hidden;
+    }
 
-body{
-background:#0a0a0f;
-color:white;
-overflow-x:hidden;
-}
+    /* NAVBAR */
 
-/* NAVBAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 80px;
+    }
 
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:25px 80px;
-}
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: #7c6cff;
+    }
 
-.logo{
-font-size:22px;
-font-weight:700;
-color:#7c6cff;
-}
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
 
-nav ul{
-display:flex;
-gap:30px;
-list-style:none;
-}
+    nav ul li {
+      cursor: pointer;
+      opacity: .8;
+    }
 
-nav ul li{
-cursor:pointer;
-opacity:.8;
-}
+    nav ul li:hover {
+      opacity: 1;
+    }
 
-nav ul li:hover{
-opacity:1;
-}
+    .auth-buttons button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
 
-.auth-buttons button{
-padding:10px 20px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-margin-left:10px;
-}
+    .login {
+      background: transparent;
+      color: white;
+      border: 1px solid #7c6cff;
+    }
 
-.login{
-background:transparent;
-color:white;
-border:1px solid #7c6cff;
-}
+    .register {
+      background: linear-gradient(45deg, #7c6cff, #5de0ff);
+      color: black;
+      font-weight: 600;
+    }
 
-.register{
-background:linear-gradient(45deg,#7c6cff,#5de0ff);
-color:black;
-font-weight:600;
-}
+    /* HERO */
 
-/* HERO */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px;
+      min-height: 80vh;
+    }
 
-.hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:80px;
-min-height:80vh;
-}
+    .hero-text {
+      max-width: 500px;
+    }
 
-.hero-text{
-max-width:500px;
-}
+    .hero-text h1 {
+      font-size: 55px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
 
-.hero-text h1{
-font-size:55px;
-line-height:1.2;
-margin-bottom:20px;
-}
+    .hero-text span {
+      color: #7c6cff;
+    }
 
-.hero-text span{
-color:#7c6cff;
-}
+    .hero-text p {
+      opacity: .7;
+      margin-bottom: 30px;
+    }
 
-.hero-text p{
-opacity:.7;
-margin-bottom:30px;
-}
+    .hero-text button {
+      padding: 14px 30px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #7c6cff, #5de0ff);
+      color: black;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
-.hero-text button{
-padding:14px 30px;
-border:none;
-border-radius:8px;
-background:linear-gradient(45deg,#7c6cff,#5de0ff);
-color:black;
-font-weight:600;
-cursor:pointer;
-}
+    /* SEARCH CARD */
 
-/* SEARCH CARD */
+    .search-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
 
-.search-card{
-background:rgba(255,255,255,0.05);
-padding:40px;
-border-radius:16px;
-backdrop-filter:blur(10px);
-}
+    .search-card input {
+      width: 250px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      margin-right: 10px;
+    }
 
-.search-card input{
-width:250px;
-padding:12px;
-border:none;
-border-radius:8px;
-margin-right:10px;
-}
+    .search-card button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #7c6cff;
+      color: white;
+      cursor: pointer;
+    }
 
-.search-card button{
-padding:12px 20px;
-border:none;
-border-radius:8px;
-background:#7c6cff;
-color:white;
-cursor:pointer;
-}
+    /* FEATURES */
 
-/* FEATURES */
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      padding: 60px;
+      text-align: center;
+    }
 
-.features{
-display:flex;
-justify-content:center;
-gap:60px;
-padding:60px;
-text-align:center;
-}
+    .feature {
+      max-width: 220px;
+    }
 
-.feature{
-max-width:220px;
-}
+    .feature h3 {
+      margin-bottom: 10px;
+      color: #7c6cff;
+    }
 
-.feature h3{
-margin-bottom:10px;
-color:#7c6cff;
-}
+    .feature p {
+      opacity: .7;
+      font-size: 14px;
+    }
 
-.feature p{
-opacity:.7;
-font-size:14px;
-}
+    /* GLOW EFFECTS */
 
-/* GLOW EFFECTS */
+    .glow1 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: #7c6cff;
+      filter: blur(200px);
+      top: -100px;
+      left: -100px;
+      opacity: .5;
+    }
 
-.glow1{
-position:absolute;
-width:400px;
-height:400px;
-background:#7c6cff;
-filter:blur(200px);
-top:-100px;
-left:-100px;
-opacity:.5;
-}
-
-.glow2{
-position:absolute;
-width:400px;
-height:400px;
-background:#5de0ff;
-filter:blur(200px);
-bottom:-100px;
-right:-100px;
-opacity:.5;
-}
-
-</style>
+    .glow2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: #5de0ff;
+      filter: blur(200px);
+      bottom: -100px;
+      right: -100px;
+      opacity: .5;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="glow1"></div>
-<div class="glow2"></div>
+  <div class="glow1"></div>
+  <div class="glow2"></div>
 
-<nav>
+  <nav>
 
-<div class="logo">EMOTRACK</div>
+    <div class="logo">EMOTRACK</div>
 
-<ul>
-<li>Home</li>
-<li>Suggestions</li>
-<li>History</li>
-<li>About</li>
-</ul>
+    <ul>
+      <li>Home</li>
+      <li>Suggestions</li>
+      <li>History</li>
+      <li>About</li>
+    </ul>
 
-<div class="auth-buttons">
-<button class="login" onclick="location.href='login.html'">Login</button>
-<button class="register" onclick="location.href='register.html'">Register</button>
-<button onclick="getSuggestion()">Get Suggestion</button>
+    <div class="auth-buttons">
+      <button class="login" onclick="location.href='login.html'">Login</button>
+      <button class="register" onclick="location.href='register.html'">Register</button>
+      <button onclick="getSuggestion()">Get Suggestion</button>
 
-<p id="suggestion"></p>
+      <p id="suggestion"></p>
 
-<script src="app.js"></script>
-</div>
+      <script src="app.js"></script>
+    </div>
 
-</nav>
+  </nav>
 
-<section class="hero">
+  <section class="hero">
 
-<div class="hero-text">
+    <div class="hero-text">
 
-<h1>
-Discover Content<br>
-Based On Your <span>Mood</span>
-</h1>
+      <h1>
+        Discover Content<br>
+        Based On Your <span>Mood</span>
+      </h1>
 
-<p>
-Emotrack recommends videos, articles, music and quotes based on how you feel.
-Stay motivated, relaxed or focused with smart content suggestions.
-</p>
+      <p>
+        Emotrack recommends videos, articles, music and quotes based on how you feel.
+        Stay motivated, relaxed or focused with smart content suggestions.
+      </p>
 
-<button>Get Started</button>
+      <button>Get Started</button>
 
-</div>
+    </div>
 
-<div class="search-card">
+    <div class="search-card">
 
-<h3 style="margin-bottom:15px;">Find Content By Mood</h3>
+      <h3 style="margin-bottom:15px;">Find Content By Mood</h3>
 
-<input placeholder="Enter emotion (happy, sad...)">
+      <input placeholder="Enter emotion (happy, sad...)">
 
-<button>Search</button>
+      <button>Search</button>
 
-</div>
+    </div>
 
-</section>
+  </section>
 
-<section class="features">
+  <section class="features">
 
-<div class="feature">
-<h3>Emotion Based</h3>
-<p>Smart recommendations according to your current mood.</p>
-</div>
+    <div class="feature">
+      <h3>Emotion Based</h3>
+      <p>Smart recommendations according to your current mood.</p>
+    </div>
 
-<div class="feature">
-<h3>Personal History</h3>
-<p>Track what you explored and how long you engaged.</p>
-</div>
+    <div class="feature">
+      <h3>Personal History</h3>
+      <p>Track what you explored and how long you engaged.</p>
+    </div>
 
-<div class="feature">
-<h3>Focused Learning</h3>
-<p>Discover useful content when you're confused or stuck.</p>
-</div>
+    <div class="feature">
+      <h3>Focused Learning</h3>
+      <p>Discover useful content when you're confused or stuck.</p>
+    </div>
 
-</section>
+  </section>
 
 </body>
+
 </html>
